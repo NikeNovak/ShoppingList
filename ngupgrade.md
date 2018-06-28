@@ -5,6 +5,8 @@ We will go through this simple shopping list repo written in angularjs and migra
 ### (1) AngularJS v1.4 app
 In this version, we have $scope, controllers, a single JavaScript page, and a single HTML page. 
 
+![screen shot 2018-06-27 at 2 45 28 pm](https://user-images.githubusercontent.com/27384475/42001455-e1076468-7a18-11e8-86ea-4131d38bec42.png)
+
 app.js
    
       var app = angular.module("myShoppingList", []); 
@@ -56,7 +58,69 @@ index.html
       </body>
       </html>
       
-      
+### (2) AngularJS v1.5 app
 
+app.js
+
+      var app = angular.module("myShoppingList", []);
+      app.component("shoppingList", {
+          template:
+              `<div  ng-cloak  class="w3-card-2 w3-margin" style="max-width:400px;">
+              <header class="w3-container w3-light-grey w3-padding-16">
+                  <h3>My Shopping List</h3>
+              </header>
+              <ul class="w3-ul">
+                  <li ng-repeat="x in $ctrl.products" 
+                  class="w3-padding-16">{{x}}
+                      <span ng-click="$ctrl.removeItem($index)" 
+                      style="cursor:pointer;" 
+                      class="w3-right w3-margin-right">x</span>
+                  </li>
+              </ul>
+              <div class="w3-container w3-light-grey w3-padding-16">
+                  <div class="w3-row w3-margin-top">
+                  <div class="w3-col s10">
+                      <input placeholder="Add shopping items here" ng-model="$ctrl.addMe" class="w3-input w3-border w3-padding">
+                  </div>
+                  <div class="w3-col s2">
+                      <button ng-click="$ctrl.addItem()" class="w3-btn w3-padding w3-green">Add</button>
+                  </div>
+                  </div>
+                  <p class="w3-text-red">{{$ctrl.errortext}}</p>
+              </div>
+              </div>  `,
+
+          controller: function () {
+              this.products = ["Milk", "Bread", "Cheese", "Avocado"];
+              this.addItem = function () {
+                  this.errortext = "";
+                  if (!this.addMe) { return; }
+                  if (this.products.indexOf(this.addMe) == -1) {
+                      this.products.push(this.addMe);
+                  } else {
+                      this.errortext = "The item has already been added to the shopping list.";
+                  }
+              };
+              this.removeItem = function (x) {
+                  this.errortext = "";
+                  this.products.splice(x, 1);
+              };
+          }
+      });
+
+index.html
+
+      <!DOCTYPE html>
+      <html ng-app="myShoppingList">
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+      <script type="text/javascript" src="angularjs.js"></script>
+
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+      <body>
+          <shopping-list></shopping-list>
+      </body>
+
+      </html>
 
 ## Go through ngUpgrade
