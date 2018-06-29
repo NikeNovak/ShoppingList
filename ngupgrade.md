@@ -60,6 +60,8 @@ index1.4.html
       
 ### (2) AngularJS v1.5 app
 
+![screen shot 2018-06-27 at 2 45 28 pm](https://user-images.githubusercontent.com/27384475/42001455-e1076468-7a18-11e8-86ea-4131d38bec42.png)
+
 app1.5.js
 
       var app = angular.module("myShoppingList", []);
