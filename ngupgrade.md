@@ -7,7 +7,7 @@ In this version, we have $scope, controllers, a single JavaScript page, and a si
 
 ![screen shot 2018-06-27 at 2 45 28 pm](https://user-images.githubusercontent.com/27384475/42001455-e1076468-7a18-11e8-86ea-4131d38bec42.png)
 
-app.js
+app1.4.js
    
       var app = angular.module("myShoppingList", []); 
       app.controller("myCtrl", function($scope) {
@@ -28,12 +28,12 @@ app.js
           };
       });
 
-index.html
+index1.4.html
 
       <!DOCTYPE html>
       <html>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-      <script type ="text/javascript" src ="app.js"></script>
+      <script type ="text/javascript" src ="app1.4.js"></script>
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <body> 
           <div ng-app="myShoppingList" ng-cloak ng-controller="myCtrl" class="w3-card-2 w3-margin" style="max-width:400px;">
@@ -60,7 +60,7 @@ index.html
       
 ### (2) AngularJS v1.5 app
 
-app.js
+app1.5.js
 
       var app = angular.module("myShoppingList", []);
       app.component("shoppingList", {
@@ -108,12 +108,12 @@ app.js
           }
       });
 
-index.html
+index1.5.html
 
       <!DOCTYPE html>
       <html ng-app="myShoppingList">
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-      <script type="text/javascript" src="angularjs.js"></script>
+      <script type="text/javascript" src="app1.5.js"></script>
 
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
